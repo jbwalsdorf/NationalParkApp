@@ -22,7 +22,6 @@ public class ParkDataDbHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "park_data.s3db";
     private static String DATABASE_PATH = null;
 
-//    private SQLiteDatabase mDataBase;
     private final Context mContext;
 
     public ParkDataDbHelper(Context context) {
@@ -36,7 +35,7 @@ public class ParkDataDbHelper extends SQLiteOpenHelper {
             DATABASE_PATH = "/data/data/" + context.getPackageName() + "/databases/";
         }
 
-        if(!this.checkDataBase()){
+        if (!this.checkDataBase()) {
             try {
                 this.createDatabase();
             } catch (IOException e) {
@@ -56,8 +55,6 @@ public class ParkDataDbHelper extends SQLiteOpenHelper {
                 ParkInfoEntry.COLUMN_AREA_DESC + " TEXT NULL," +
                 ParkInfoEntry.COLUMN_AREA_ID + " TEXT UNIQUE NOT NULL," +
                 ParkInfoEntry.COLUMN_AREA_ZIP + " TEXT NULL," +
-//                ParkInfoEntry.COLUMN_AREA_ADDR_1 + " TEXT DEFAULT ''," +
-//                ParkInfoEntry.COLUMN_AREA_ADDR_2 + " TEXT DEFAULT ''," +
                 ParkInfoEntry.COLUMN_AREA_ADDR_1 + " TEXT NULL," +
                 ParkInfoEntry.COLUMN_AREA_ADDR_2 + " TEXT NULL," +
                 ParkInfoEntry.COLUMN_AREA_STATE + " TEXT NULL," +

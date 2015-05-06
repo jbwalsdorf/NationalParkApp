@@ -1,6 +1,5 @@
 package com.jeffwalsdorf.nationalparksapp.data;
 
-
 import android.content.ContentProvider;
 import android.content.ContentValues;
 import android.content.UriMatcher;
@@ -11,7 +10,6 @@ import android.net.Uri;
 
 import static com.jeffwalsdorf.nationalparksapp.data.ParkDataContract.ParkInfoEntry;
 import static com.jeffwalsdorf.nationalparksapp.data.ParkDataContract.ParkNamesEntry;
-
 
 public class ParkInfoProvider extends ContentProvider {
 
@@ -66,7 +64,7 @@ public class ParkInfoProvider extends ContentProvider {
     private Cursor getParkName(Uri uri, String[] projection, String sortOrder) {
         String parkName = ParkNamesEntry.getParkNameFromUri(uri);
 
-        parkName = "%"+parkName+"%";
+        parkName = "%" + parkName + "%";
 
         String[] selectionArgs = new String[]{parkName};
         String selection = sParkNameSelection;
@@ -82,8 +80,6 @@ public class ParkInfoProvider extends ContentProvider {
         );
 
         return cursor;
-
-
     }
 
     static UriMatcher buildUriMatcher() {
@@ -114,8 +110,8 @@ public class ParkInfoProvider extends ContentProvider {
                 retCursor = getParkInfo(uri, projection, sortOrder);
                 break;
             }
-            case PARK_NAME:{
-                retCursor = getParkName(uri,projection,sortOrder);
+            case PARK_NAME: {
+                retCursor = getParkName(uri, projection, sortOrder);
                 break;
             }
             case ALL_PARKS: {
@@ -211,7 +207,6 @@ public class ParkInfoProvider extends ContentProvider {
             default:
                 return super.bulkInsert(uri, values);
         }
-
     }
 
     @Override
@@ -250,7 +245,6 @@ public class ParkInfoProvider extends ContentProvider {
                 break;
             default:
                 throw new UnsupportedOperationException("Unknown uri: " + uri);
-
         }
 
         if (rowsUpdated != 0) {

@@ -1,6 +1,5 @@
 package com.jeffwalsdorf.nationalparksapp.data;
 
-
 import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.net.Uri;

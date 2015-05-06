@@ -43,15 +43,12 @@ public class FetchParkDataTask extends AsyncTask<String, Void, Void> {
     private void getParkInfoFromXML(String parkInfoXMLStr)
             throws XmlPullParserException, IOException {
 
-//        final String REC_AREA_INFO = "RecArea";
         final String REC_AREA_PHONE = "RecAreaPhone";
         final String REC_AREA_DESC = "RecAreaDescription";
         final String REC_AREA_ID = "RecAreaID";
 
-//        final String REC_ACTIVITY_HEAD = "RecAreaActivity";
         final String REC_ACTIVITY_NAME = "RecActivityName";
 
-//        final String REC_AREA_ADDRESS = "RecAreaAddress";
         final String REC_AREA_ZIP = "PostalCode";
         final String REC_AREA_ADDR1 = "StreetAddress1";
         final String REC_AREA_ADDR2 = "StreetAddress2";
@@ -135,16 +132,9 @@ public class FetchParkDataTask extends AsyncTask<String, Void, Void> {
     private void addParkInfoFromJson(String parkInfoJsonStr)
             throws JSONException {
 
-
-//        Cursor parkInfoCursor = mContext.getContentResolver().query(
-//                ParkInfoEntry.CONTENT_URI,
-//                new String[]{ParkInfoEntry._ID},
-//                ParkInfoEntry.COLUMN_AREA_ID + " =?",
-//                new String[]{parkId},
-//                null);
-
-
-        //final String REC_ELEMENTS = "RecElements";
+//        This is never used as the Recreation.gov JSON server was taken down
+//        during the middle of this project (awesome...).  The project uses
+//        Recreation.gov's XML server until they take that down.
 
         final String REC_AREA_INFO = "RecArea";
         final String REC_AREA_PHONE = "RecAreaPhone";
@@ -161,25 +151,19 @@ public class FetchParkDataTask extends AsyncTask<String, Void, Void> {
         final String REC_AREA_STATE = "AddressStateCode";
         final String REC_AREA_CITY = "City";
 
-
         JSONObject parkInfoJson = new JSONObject(parkInfoJsonStr);
-
 
         JSONArray activityArray = parkInfoJson.getJSONArray(REC_ACTIVITY_HEAD);
 
         List<String> activityList = new ArrayList<>();
-
 
         int len = activityArray.length();
 
         for (int i = 0; i < len; i++) {
 
             String activityDescription;
-
             JSONObject activityObject = activityArray.getJSONObject(i);
-
             activityDescription = activityObject.getString(REC_ACTIVITY_NAME);
-
             activityList.add(activityDescription);
         }
 
@@ -209,9 +193,7 @@ public class FetchParkDataTask extends AsyncTask<String, Void, Void> {
         parkInfoValues.put(ParkInfoEntry.COLUMN_AREA_STATE, areaState);
         parkInfoValues.put(ParkInfoEntry.COLUMN_AREA_CITY, areaCity);
 
-
         Uri insertedUri = mContext.getContentResolver().insert(ParkInfoEntry.CONTENT_URI, parkInfoValues);
-
     }
 
 

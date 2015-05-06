@@ -23,7 +23,11 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Park Finder");
+        if (actionBar != null) {
+            actionBar.setTitle(R.string.app_name);
+            actionBar.setIcon(R.drawable.ic_action_mount_rainier_7431);
+            actionBar.setLogo(R.drawable.ic_action_mount_rainier_7431);
+        }
 
         if (findViewById(R.id.detail_container) != null) {
             mTwoPane = true;

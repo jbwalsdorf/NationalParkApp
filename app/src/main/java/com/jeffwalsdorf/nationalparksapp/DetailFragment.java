@@ -161,16 +161,6 @@ public class DetailFragment extends Fragment implements
 
         Log.d("LOADER:", "Loader created");
 
-//        Bundle bundle = getArguments();
-//
-//        FetchParkDataTask fetchParkDataTask = new FetchParkDataTask(getActivity());
-//
-//        if (bundle != null) {
-//            mUri = bundle.getParcelable(DETAIL_URI);
-//            String parkId = ParkDataContract.ParkInfoEntry.getParkIdFromUri(mUri);
-//            fetchParkDataTask.execute(parkId);
-//        }
-
         if (mUri != null) {
             return new CursorLoader(
                     getActivity(),

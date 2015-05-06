@@ -64,8 +64,6 @@ public class ParkNameFragment extends Fragment implements
 
     Parcelable state;
 
-    //private int mPosition = ListView.INVALID_POSITION;
-
     private static final int PARK_NAME_LOADER = 0;
 
     private static final String[] PARK_DATA_COLUMNS = {
@@ -154,10 +152,6 @@ public class ParkNameFragment extends Fragment implements
 
         mListview = (ListView) rootView.findViewById(R.id.listview_results);
 
-//        mListview.addHeaderView(new View(getActivity()));
-//        mListview.addFooterView(new View(getActivity()));
-//        mListview.setChoiceMode(AbsListView.CHOICE_MODE_SINGLE);
-
         mListview.setAdapter(mParkNameAdapter);
 
         if (savedInstanceState != null && savedInstanceState.containsKey(LIST_STATE)) {
@@ -240,7 +234,6 @@ public class ParkNameFragment extends Fragment implements
         mParkNameAdapter.swapCursor(data);
         if(mPosition!=ListView.INVALID_POSITION){
             mListview.smoothScrollToPosition(mPosition);
-
         }
     }
 

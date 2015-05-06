@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="sort_order">
+        <item>Alphabetical</item>
+        <item>Distance</item>
+    </string-array>
+
+    <string-array name="sort_order_values">
+        <item>Alphabetical</item>
+        <item>Distance</item>
+    </string-array>
+
+</resources>

@@ -18,7 +18,6 @@ public class ParkNameAdapter extends CursorAdapter {
         super(context, c, flags);
     }
 
-
     public static class ViewHolder {
         public final TextView parkName;
         public final ImageView parkImage;
@@ -50,8 +49,8 @@ public class ParkNameAdapter extends CursorAdapter {
         viewHolder.parkName.setText(parkName);
 
         Uri uri = Uri.parse(cursor.getString(ParkNameFragment.COL_PARK_DATA_URL));
-        Picasso.with(context).load(uri).placeholder(R.drawable.usfs).into(viewHolder.parkImage);
 
+        Picasso.with(context).load(uri).placeholder(R.drawable.usfs).into(viewHolder.parkImage);
     }
 
 

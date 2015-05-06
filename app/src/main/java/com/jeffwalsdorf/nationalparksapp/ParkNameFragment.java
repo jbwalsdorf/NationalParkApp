@@ -185,6 +185,7 @@ public class ParkNameFragment extends Fragment implements
 
         if (savedInstanceState != null && savedInstanceState.containsKey(SELECTED_KEY)) {
             mPosition = savedInstanceState.getInt(SELECTED_KEY);
+            mListview.setSelection(mPosition);
         }
 
         return rootView;
@@ -239,6 +240,7 @@ public class ParkNameFragment extends Fragment implements
         mParkNameAdapter.swapCursor(data);
         if(mPosition!=ListView.INVALID_POSITION){
             mListview.smoothScrollToPosition(mPosition);
+
         }
     }
 

@@ -301,8 +301,9 @@ public class ParkNameFragment extends Fragment implements
 
         if (newSortOrder != mSortOrder) {
             mSortOrder = newSortOrder;
-            getLoaderManager().restartLoader(PARK_NAME_LOADER, null, this);
             mListview.setSelection(0);
+            mPosition = ListView.INVALID_POSITION;
+            getLoaderManager().restartLoader(PARK_NAME_LOADER, null, this);
         }
 
         return super.onOptionsItemSelected(item);

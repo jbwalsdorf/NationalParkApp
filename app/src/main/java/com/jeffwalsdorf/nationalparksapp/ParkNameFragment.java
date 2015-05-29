@@ -86,11 +86,8 @@ public class ParkNameFragment extends Fragment implements
     static final int COL_PARK_DATA_URL = 6;
 
     public interface Callback {
-
         boolean isTwoPane();
-
         void onItemSelected(Uri parkUri);
-
     }
 
     public ParkNameFragment() {

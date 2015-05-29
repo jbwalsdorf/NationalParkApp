@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity
         if (findViewById(R.id.detail_container) != null) {
             mTwoPane = true;
 
-
             if (savedInstanceState == null) {
                 getFragmentManager().beginTransaction()
                         .replace(R.id.detail_container, new DetailFragment(), DETAIL_FRAGMENT_TAG)

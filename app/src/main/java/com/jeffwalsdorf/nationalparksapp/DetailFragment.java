@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,11 +27,11 @@ import com.jeffwalsdorf.nationalparksapp.data.ParkDataContract.ParkInfoEntry;
 import com.jeffwalsdorf.nationalparksapp.data.ParkDataContract.ParkNamesEntry;
 import com.squareup.picasso.Picasso;
 
+//  This shows the detail content using a loader that pulls info from a content provider
+
 public class DetailFragment extends Fragment implements
         OnMapReadyCallback,
         LoaderManager.LoaderCallbacks<Cursor> {
-
-    //private static final String LOG_TAG = DetailFragment.class.getSimpleName();
 
     static final String DETAIL_URI = "URI";
 
@@ -40,6 +39,7 @@ public class DetailFragment extends Fragment implements
 
     private static final int DETAIL_LOADER = 0;
 
+//    The projection for the SQL query
     private static final String[] DETAIL_COLUMNS = {
             ParkInfoEntry.TABLE_NAME + "." + ParkInfoEntry._ID,
             ParkInfoEntry.TABLE_NAME + "." + ParkInfoEntry.COLUMN_AREA_ID,
@@ -105,6 +105,7 @@ public class DetailFragment extends Fragment implements
 
         FetchParkDataTask fetchParkDataTask = new FetchParkDataTask(getActivity());
 
+//      Sends the park ID URI to the XML parser to be loaded into the content provider
         if (bundle != null) {
             mUri = bundle.getParcelable(DETAIL_URI);
             String parkId = ParkDataContract.ParkInfoEntry.getParkIdFromUri(mUri);
@@ -159,8 +160,6 @@ public class DetailFragment extends Fragment implements
 
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 
-        Log.d("LOADER:", "Loader created");
-
         if (mUri != null) {
             return new CursorLoader(
                     getActivity(),
@@ -180,7 +179,7 @@ public class DetailFragment extends Fragment implements
 
         if (data != null && data.moveToFirst()) {
 
-            Log.d("LOADER:", "Loader finished");
+//          Build the detail fragment from the data in the content provider
 
             Uri uri = Uri.parse(data.getString(COL_PARK_URL));
             Picasso.with(getActivity()).load(uri).placeholder(R.drawable.usfs).into(mParkPicture);

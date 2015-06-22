@@ -52,6 +52,4 @@ public class ParkNameAdapter extends CursorAdapter {
 
         Picasso.with(context).load(uri).placeholder(R.drawable.usfs).into(viewHolder.parkImage);
     }
-
-
 }

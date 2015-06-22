@@ -117,6 +117,7 @@ public class FetchParkDataTask extends AsyncTask<String, Void, Void> {
             eventType = parser.next();
         }
 
+//      Sort the activity list alphabetically for presentation
         java.util.Collections.sort(activityList);
 
         String activityString = TextUtils.join(", ", activityList);
@@ -126,7 +127,7 @@ public class FetchParkDataTask extends AsyncTask<String, Void, Void> {
         Uri insertedUri = mContext.getContentResolver()
                 .insert(ParkInfoEntry.CONTENT_URI, parkInfoValues);
 
-        Log.d("XML Parser:", "Data from web saved");
+//        Log.d("XML Parser:", "Data from web saved");
     }
 
     private void addParkInfoFromJson(String parkInfoJsonStr)
@@ -204,7 +205,7 @@ public class FetchParkDataTask extends AsyncTask<String, Void, Void> {
             return null;
         }
 
-        Log.d("ASYNC:", "Connection to web");
+//        Log.d("ASYNC:", "Connection to web");
 
         HttpsURLConnection urlConnection = null;
         BufferedReader reader = null;
@@ -225,6 +226,8 @@ public class FetchParkDataTask extends AsyncTask<String, Void, Void> {
             final String ID_PARAM = "EntityID";
             final String ENTITY_PARAM = "EntityType";
 
+
+//          Builds URL for the HTTP connection to get the XML
             Uri builtUri = Uri.parse(PARK_INFO_BASE_URL).buildUpon()
                     .appendQueryParameter(METHOD_PARAM, method)
                     .appendQueryParameter(FORMAT_PARAM, format)

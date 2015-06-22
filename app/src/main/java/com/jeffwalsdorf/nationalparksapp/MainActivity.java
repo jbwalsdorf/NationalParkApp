@@ -1,11 +1,11 @@
 package com.jeffwalsdorf.nationalparksapp;
 
 
+import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 
@@ -22,11 +22,9 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ActionBar actionBar = getSupportActionBar();
+        ActionBar actionBar = getActionBar();
         if (actionBar != null) {
             actionBar.setTitle(R.string.app_name);
-            actionBar.setIcon(R.drawable.ic_action_mount_rainier_7431);
-            actionBar.setLogo(R.drawable.ic_action_mount_rainier_7431);
         }
 
         if (findViewById(R.id.detail_container) != null) {
@@ -68,15 +66,10 @@ public class MainActivity extends AppCompatActivity
             fragment.setArguments(args);
 
             FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-            fragmentTransaction.setCustomAnimations(R.anim.enter_from_left, 0);
-
 
             fragmentTransaction.replace(R.id.detail_container, fragment, DETAIL_FRAGMENT_TAG);
             fragmentTransaction.commit();
 
-//            getFragmentManager().beginTransaction()
-//                    .replace(R.id.detail_container, fragment, DETAIL_FRAGMENT_TAG)
-//                    .commit();
         } else {
             Intent intent = new Intent(this, DetailActivity.class)
                     .setData(parkUri);

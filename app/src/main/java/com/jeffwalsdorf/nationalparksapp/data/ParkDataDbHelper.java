@@ -69,6 +69,8 @@ public class ParkDataDbHelper extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_PARK_INFO_TABLE);
     }
 
+//      This will check to see if the prepopulated database is on the device and copy it over
+//      into the content provider.
     public void createDatabase() throws IOException {
 
         boolean mDataBaseExist = checkDataBase();
@@ -90,6 +92,7 @@ public class ParkDataDbHelper extends SQLiteOpenHelper {
         return dbFile.exists();
     }
 
+//  The method that copies the prepopulated database into the app
     private void copyDataBase() throws IOException {
         InputStream mInput = mContext.getAssets().open(DATABASE_NAME);
         String outFileName = DATABASE_PATH + DATABASE_NAME;

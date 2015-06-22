@@ -66,6 +66,8 @@ public class ParkNameFragment extends Fragment implements
 
     private static final int PARK_NAME_LOADER = 0;
 
+
+//  Projection for content provider
     private static final String[] PARK_DATA_COLUMNS = {
             ParkNamesEntry.TABLE_NAME + "." +
                     ParkNamesEntry._ID,
@@ -85,6 +87,7 @@ public class ParkNameFragment extends Fragment implements
     static final int COL_PARK_DATA_TYPE = 5;
     static final int COL_PARK_DATA_URL = 6;
 
+//  Main activity callbacks.  These will properly handle the data transfers between fragments.d
     public interface Callback {
         boolean isTwoPane();
         void onItemSelected(Uri parkUri);
@@ -99,6 +102,9 @@ public class ParkNameFragment extends Fragment implements
         String sortOrder = null;
 
         switch (mSortOrder) {
+//          This will sort the data list using the pythagorean theorem.  True, this does not
+//          account for the curve of the earth, which would require more processing, but it's
+//          close enough for our needs.
             case "Distance": {
                 if (mLastLocation != null) {
                     sortOrder = "((" +
@@ -127,6 +133,7 @@ public class ParkNameFragment extends Fragment implements
             parkNamesUri = ParkNamesEntry.CONTENT_URI;
         }
 
+//      Pulls the data from the content provider
         return new CursorLoader(getActivity(),
                 parkNamesUri,
                 PARK_DATA_COLUMNS,
@@ -155,6 +162,7 @@ public class ParkNameFragment extends Fragment implements
             state = savedInstanceState.getParcelable(LIST_STATE);
         }
 
+//      Calls the method to
         buildGoogleApiClient();
 
         mListview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -259,6 +267,9 @@ public class ParkNameFragment extends Fragment implements
             mSearchView.setIconified(true);
         }
 
+//      This automatically updates the list of parks as the user types into the searchview.
+//      Each character entry causes a new URI to be processed by the loader, resulting in
+//      a new list being populated.
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
 
             @Override
@@ -275,6 +286,8 @@ public class ParkNameFragment extends Fragment implements
             }
         });
 
+//      This fixes a bug that caused the searchview to forget it's state (opened vs. iconified)
+//      when the device was rotated.
         if (!TextUtils.isEmpty(mSetSearchText)) {
             mSearchView.setIconified(false);
             mSearchView.setQuery(mSetSearchText, true);
@@ -310,6 +323,8 @@ public class ParkNameFragment extends Fragment implements
         getLoaderManager().initLoader(PARK_NAME_LOADER, null, this);
         super.onActivityCreated(savedInstanceState);
     }
+
+//  The next three methods are for Google API Client callbacks
 
     @Override
     public void onConnected(Bundle bundle) {

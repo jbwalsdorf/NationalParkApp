@@ -2,4 +2,9 @@
     <string name="app_name">GET Outside!</string>
 
     <string name="action_settings">Settings</string>
+
+    <string name="sort_alpha">Sort Alphabetically</string>
+    <string name="sort_dist">Sort By Distance</string>
+
+    <string name="park_activity">Park Activity</string>
 </resources>

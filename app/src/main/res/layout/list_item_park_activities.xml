@@ -17,6 +17,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:paddingLeft="16dp"
-        android:text="Park Activity"/>
+        android:text="@string/park_activity"/>
 
 </LinearLayout>

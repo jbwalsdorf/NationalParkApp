@@ -6,13 +6,13 @@
     <item
         android:id="@+id/sort_alphabetically"
         android:orderInCategory="101"
-        android:title="Sort Alphabetically"
+        android:title="@string/sort_alpha"
         app:showAsAction="never"/>
 
     <item
         android:id="@+id/sort_by_distance"
         android:orderInCategory="101"
-        android:title="Sort By Distance"
+        android:title="@string/sort_dist"
         app:showAsAction="never"/>
 
 </menu>

@@ -49,7 +49,7 @@ public class ParkInfoProvider extends ContentProvider {
         String[] selectionArgs = new String[]{parkId};
         String selection = sParkInfoSelection;
 
-        Cursor debug = sParkInfoQueryBuilder.query(mOpenHelper.getReadableDatabase(),
+        Cursor cursor = sParkInfoQueryBuilder.query(mOpenHelper.getReadableDatabase(),
                 projection,
                 selection,
                 selectionArgs,
@@ -58,7 +58,7 @@ public class ParkInfoProvider extends ContentProvider {
                 sortOrder
         );
 
-        return debug;
+        return cursor;
     }
 
     private Cursor getParkName(Uri uri, String[] projection, String sortOrder) {

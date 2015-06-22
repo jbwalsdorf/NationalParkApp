@@ -309,7 +309,7 @@ public class ParkNameFragment extends Fragment implements
                 break;
         }
 
-        if (newSortOrder != mSortOrder) {
+        if (!newSortOrder.equals(mSortOrder)) {
             mSortOrder = newSortOrder;
             mListview.setSelection(0);
             mPosition = ListView.INVALID_POSITION;
